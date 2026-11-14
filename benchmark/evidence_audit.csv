@@ -1,0 +1,21 @@
+﻿question_id,split,gold_page,quote_found,quote_sufficient_for_answer,page_supports_answer,audit_note
+q01,dev,5,yes,yes,yes,Quote includes both student ID requirement and clothing guidance.
+q02,dev,5,yes,yes,yes,Quote states the after-18:00 condition and prohibited gathering.
+q03,dev,6,yes,yes,yes,Quote names smoking tobacco/e-cigarettes and drinking alcohol in campus.
+q04,dev,7,yes,yes,yes,Quote gives 5.5 years for same-field learners on the standard schedule.
+q05,dev,9,yes,yes,yes,Quote lists all four time-planning principles.
+q06,dev,9,yes,yes,yes,Quote updated to include the source item about equivalent/replacement courses and transfer credit.
+q07,dev,10,yes,yes,yes,Quote corrected to include source list numbers 2 and 3; exact normalized quote is present on PDF page 10 and supports both uses.
+q08,dev,10,yes,yes,yes,Quote maps 80–89 points to good classification.
+q09,dev,12,yes,yes,yes,Quote lists all four disciplinary forms.
+q10,dev,14,yes,yes,yes,Visually checked the table: row 2 is students with disabilities and the column is tuition exemption/reduction percentage; value 100.
+q11,dev,16,yes,yes,yes,Visually checked the scholarship graphic: GPA >= 3.6 and conduct score >= 90 correspond to excellent.
+q12,dev,16,yes,yes,yes,Quote states the disciplinary exclusion and timing of scholarship review.
+q13,dev,17,yes,yes,yes,Quote gives both 50% and 100% tuition-support levels.
+q14,dev,19,yes,yes,yes,Quote names the work.hust.edu.vn portal.
+q15,dev,38,yes,yes,yes,Quote identifies content/images that harm the university's reputation.
+q16,test,46,yes,yes,yes,Quote states online registration and 24/7 incident handling.
+q17,test,47,yes,yes,yes,"Quote names the housing-support group, its student-union affiliation, and housing/roommate purpose."
+q18,test,48,yes,yes,yes,"Quote includes origin, destination, and arrival-time tracking for buses."
+q19,test,51,yes,yes,yes,Quote states the recommended motive: experience rather than livelihood.
+q20,test,52,yes,yes,yes,Quote names the fee demand; surrounding sentence identifies it as a job-scam warning.

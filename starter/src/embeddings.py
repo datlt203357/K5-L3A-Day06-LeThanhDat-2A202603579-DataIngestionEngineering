@@ -1,5 +1,6 @@
 """Choose a real embedding provider (API or local) and implement this contract."""
 from typing import Protocol
+from sentence_transformers import SentenceTransformer
 
 
 class Embedder(Protocol):
@@ -16,14 +17,29 @@ class Embedder(Protocol):
 
 
 class MyEmbedder:
-    """TODO: implement a provider adapter; do not silently fall back to mock vectors."""
+    """Local Sentence Transformers adapter; never falls back to mock vectors."""
 
     def __init__(self, model_name: str) -> None:
         self.model_name = model_name
-        raise NotImplementedError("TODO: initialize real embedder and dimensions")
+        # This lab uses a model downloaded to the local cache. Offline loading
+        # avoids Hub retries and guarantees document text is embedded locally.
+        self.model = SentenceTransformer(model_name, local_files_only=True)
+        self.dimensions = self.model.get_embedding_dimension()
 
     def embed_documents(self, texts: list[str]) -> list[list[float]]:
-        raise NotImplementedError("TODO: embed_documents")
+        if not texts:
+            return []
+        vectors = self.model.encode_document(
+            texts,
+            normalize_embeddings=True,
+            convert_to_numpy=True,
+        )
+        return vectors.tolist()
 
     def embed_query(self, question: str) -> list[float]:
-        raise NotImplementedError("TODO: embed_query")
+        vector = self.model.encode_query(
+            question,
+            normalize_embeddings=True,
+            convert_to_numpy=True,
+        )
+        return vector.tolist()

@@ -1,6 +1,6 @@
-# Starter · PostgreSQL + pgvector
+    # Starter · PostgreSQL + pgvector
 
-Bộ khởi động **tùy chọn** cho lab cá nhân. Docker Compose tạo PostgreSQL + pgvector local; các file trong `src/` là **khung pseudocode có TODO**, chưa đọc tài liệu, tạo embedding, lưu vector hay chạy benchmark. Bạn cần tự hiện thực. Vẫn có thể chọn Qdrant, Chroma hoặc vector store tương đương theo [GUIDE.md](../GUIDE.md).
+Bộ khởi động **tùy chọn** cho lab cá nhân. Docker Compose tạo PostgreSQL + pgvector local. `src/` đã có đọc/chuẩn hóa PDF, chunking, embedder local, lưu/tìm vector và chạy benchmark retrieval tự động. Phần audit thủ công về coherence, metadata và grounding vẫn cần hoàn thiện trong báo cáo. Vẫn có thể chọn Qdrant, Chroma hoặc vector store tương đương theo [GUIDE.md](../GUIDE.md).
 
 ## Cấu trúc
 
@@ -8,19 +8,19 @@ Bộ khởi động **tùy chọn** cho lab cá nhân. Docker Compose tạo Post
 starter/
 ├── docker-compose.yml     # PostgreSQL 16 + pgvector, chỉ mở cổng local
 ├── init.sql               # bật extension khi tạo database mới
-├── requirements.txt       # psycopg, pypdf và python-dotenv
+├── requirements.txt       # psycopg, pypdf, sentence-transformers, pgvector
 ├── .env.example           # cấu hình mẫu; copy thành .env
 ├── scripts/check_setup.py # kiểm tra kết nối và extension (đã chạy được)
 ├── src/
 │   ├── models.py          # cấu trúc dữ liệu mẫu
-│   ├── ingestion.py       # TODO: đọc / chuẩn hóa tài liệu
-│   ├── chunking.py        # TODO: chia chunk
-│   ├── embeddings.py      # TODO: chọn model API hoặc local
-│   ├── store.py           # TODO: lưu vector, metadata và filter
-│   ├── evaluation.py      # TODO: chấm truy xuất, lưu trace
-│   └── run.py             # TODO: kết nối các bước thành pipeline
+│   ├── ingestion.py       # đọc PDF, chuẩn hóa và giữ truy vết trang/section
+│   ├── chunking.py        # fixed-size và paragraph-aware
+│   ├── embeddings.py      # adapter Sentence Transformers local
+│   ├── store.py           # PostgreSQL + pgvector, cosine search, metadata filter
+│   ├── evaluation.py      # Hit@1/Evidence Hit@3 và trace tự động
+│   └── run.py             # chạy ingestion đến retrieval, ghi trace/kết quả
 ├── data/                  # bạn tự chuẩn bị corpus được phép sử dụng
-└── results/               # lưu kết quả của bạn
+└── ../results/            # trace, summary và metadata mỗi lần chạy
 ```
 
 ## 1. Cài và kiểm tra database
@@ -50,16 +50,15 @@ Dừng container nhưng giữ dữ liệu:
 docker compose -p day6_student_starter stop
 ```
 
-## 2. Chọn embedding model
+## 2. Embedding model
 
-Điền key tương ứng trong `.env` nếu dùng OpenRouter, OpenAI hoặc Gemini; **không commit `.env`**. Model local không cần API key. `requirements.txt` chỉ có dependencies cơ bản: tự cài SDK hoặc thư viện local phù hợp với model bạn chọn và ghi lại version/lệnh cài trong báo cáo. Ghi tên model và số chiều; dùng cùng model cho toàn bộ chiến lược và vector query tương thích vector document.
+Mặc định `.env.example` dùng `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` chạy local; đổi `EMBEDDING_MODEL` nếu chọn model khác. Model local không cần API key. Ghi tên model, số chiều và version thư viện vào báo cáo; dùng cùng model cho toàn bộ chiến lược và vector query tương thích vector document.
 
 ## 3. Hoàn thiện pipeline
 
-1. Đặt corpus vào `data/` hoặc cung cấp manifest/hướng dẫn truy cập. Đọc [GUIDE.md](../GUIDE.md) về **30 trang nội dung**, quyền dữ liệu và metadata.
-2. Hoàn thiện từng hàm TODO trong `src/`. Lưu ID tài liệu, nguồn, trang/vị trí và ít nhất một trường filter có ích.
-3. Xây ít nhất ba cấu hình; ví dụ A fixed-size, B theo đoạn, C như B nhưng có filter. Cần cùng corpus, model và benchmark; nạp lại không nhân đôi và xử lý chunk cũ khi dữ liệu đổi.
-4. Tự viết ít nhất 20 câu hỏi kèm evidence, tách dev/test trước khi thử theo [BENCHMARK.md](../BENCHMARK.md). Lưu trace top-3 và báo cáo đủ năm tiêu chí.
-5. Sau khi hoàn thiện, chạy `python -m src.run` từ thư mục `starter/`. Trước khi làm TODO, lệnh này **chủ động báo `NotImplementedError`**.
+1. Đặt corpus được phép sử dụng trong repo và hoàn thiện manifest. Đọc [GUIDE.md](../GUIDE.md) về **30 trang nội dung**, quyền dữ liệu và metadata.
+2. Dùng cùng corpus, model và bộ câu hỏi cho A/B/C. Chạy `python -m src.run` từ thư mục `starter/`; pipeline tạo embedding, lưu/tìm vector và ghi trace top-3 cùng Hit@1/Evidence Hit@3.
+3. Mỗi lần chạy tạo thư mục riêng trong `results/` với `retrieval_traces.jsonl`, `retrieval_summary.json` và `run_metadata.json`.
+4. Hoàn thiện audit thủ công theo [BENCHMARK.md](../BENCHMARK.md): coherence trên 10 vị trí cố định, metadata trên 5 câu test và grounding trên đủ 5 câu test. Exact quote match tự động chỉ là proxy retrieval, không thay nhãn thủ công.
 
 Lưu code, cấu hình, kết quả và lệnh chạy để người chấm tái lập; không commit key, dữ liệu mật hoặc dữ liệu không có quyền chia sẻ.

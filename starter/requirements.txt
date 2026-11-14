@@ -1,4 +1,10 @@
-# Core setup and PDF parsing. Choose and install an embedding SDK separately.
+# PostgreSQL/pgvector, PDF parsing, local embeddings, and PDF font decoding.
 psycopg[binary]==3.3.8
 pypdf>=5,<7
 python-dotenv>=1,<2
+
+sentence-transformers==6.3.0
+fonttools==4.68.0
+pgvector==0.5.1
+
+

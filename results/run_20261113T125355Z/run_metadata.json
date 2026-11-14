@@ -1,0 +1,41 @@
+{
+  "run_started_at_utc": "2026-11-13T12:53:55.069448+00:00",
+  "corpus_id": "hust_handbook_2026",
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "embedding_dimensions": 384,
+  "metric": "cosine",
+  "top_k": 3,
+  "chunking": {
+    "A": {
+      "size_chars": 500,
+      "overlap_chars": 50
+    },
+    "B": {
+      "method": "paragraph-aware",
+      "max_size_chars": 500
+    },
+    "C": {
+      "same_chunks_as": "B",
+      "filter": "metadata.section when provided"
+    }
+  },
+  "questions": 20,
+  "dev_questions": 15,
+  "test_questions": 5,
+  "token_over_limit_chunks": {
+    "A": 0,
+    "B": 0
+  },
+  "max_embedding_tokens": 120,
+  "chunk_counts": {
+    "A": 511,
+    "B": 444,
+    "C": 444
+  },
+  "timing_seconds": {
+    "ingestion": 31.656,
+    "chunking": 0.019,
+    "embedding_and_store": 27.622,
+    "retrieval": 2.124
+  }
+}

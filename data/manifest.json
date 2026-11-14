@@ -1,0 +1,178 @@
+{
+  "corpus_id": "hust_student_handbook_2026",
+  "sources": [
+    {
+      "source_id": "hust_handbook_2026",
+      "title": "Sổ tay sinh viên 2026",
+      "source_path_or_url": "So tay sinh vien_2026.pdf",
+      "publisher": "Đại học Bách khoa Hà Nội",
+      "official_source_url": "https://ctsv.hust.edu.vn/tan-sinh-vien/nhung-dieu-can-biet",
+      "accessed_at": "2026-11-13",
+      "license_or_permission": "Bản quyền thuộc Đại học Bách khoa Hà Nội; chưa xác nhận giấy phép mở. Dự án dự kiến dùng bản local cho học tập/nghiên cứu/thử nghiệm phi thương mại theo khoản 5 Điều 7 Luật Sở hữu trí tuệ và Điều 37a Nghị định 17/2023/NĐ-CP, sửa đổi bởi Nghị định 134/2026/NĐ-CP, chỉ khi đáp ứng đầy đủ điều kiện luật định (bao gồm nguồn truy cập hợp pháp, mục đích phi thương mại, không gây thiệt hại bất hợp lý hoặc thay thế việc khai thác bình thường, và tôn trọng quyền bảo lưu). Việc sử dụng có điều kiện này không cấp quyền tái phân phối: chưa có văn bản HUST cho phép đăng công khai PDF, toàn văn hoặc trace chứa nhiều nội dung nguồn.",
+      "rights_sources": [
+        {
+          "title": "HUST - Sổ tay sinh viên 2026",
+          "url": "https://ctsv.hust.edu.vn/nhap-hoc/thong-tin/142/so-tay-sinh-vien-2026"
+        },
+        {
+          "title": "HUST CTT - Nội dung công bố quyền sở hữu của Đại học Bách khoa Hà Nội",
+          "url": "https://ctt.hust.edu.vn/DisplayWeb/DisplayBaiViet?baiviet=28194"
+        },
+        {
+          "title": "Luật sửa đổi Luật Sở hữu trí tuệ số 131/2025/QH15 - Công báo",
+          "url": "https://congbao.cdnchinhphu.vn/180507251028987904/2026/1/26/cong-bao-so-40-ngay-22-01-46938signed-17694138977152036337020.pdf"
+        },
+        {
+          "title": "Nghị định số 134/2026/NĐ-CP sửa đổi Nghị định 17/2023/NĐ-CP - Công báo",
+          "url": "https://congbao.cdnchinhphu.vn/180507251028987904/2026/4/29/469388-1777368984_v1_1777430941_signed.pdf"
+        }
+      ],
+      "pdf_physical_page_count": 55,
+      "counting_rule": "Chỉ tính trang có nội dung liên quan; loại bìa, trang trắng và trang không có nội dung hữu ích.",
+      "included_pdf_pages": [
+        "2-3",
+        "5-54"
+      ],
+      "excluded_pdf_pages": [
+        {
+          "pdf_page": 1,
+          "reason": "Bìa"
+        },
+        {
+          "pdf_page": 4,
+          "reason": "Mục lục"
+        },
+        {
+          "pdf_page": 55,
+          "reason": "Trang thông tin xuất bản, không có nội dung hướng dẫn sinh viên"
+        }
+      ],
+      "page_numbering_note": "Dùng số trang vật lý trong PDF, đánh số từ 1; ghi riêng số in trên trang nếu khác.",
+      "sections": [
+        {
+          "section_id": "gioi_thieu",
+          "title": "Điểm mốc lịch sử và thông điệp năm học",
+          "pdf_page_range": [
+            2,
+            3
+          ]
+        },
+        {
+          "section_id": "quy_che_quy_dinh",
+          "title": "Quy chế, quy định, thủ tục cần nắm vững",
+          "pdf_page_range": [
+            5,
+            24
+          ]
+        },
+        {
+          "section_id": "doan_hoi",
+          "title": "Đảng ủy, chi bộ sinh viên, Đoàn Thanh niên, Hội Sinh viên",
+          "pdf_page_range": [
+            25,
+            27
+          ]
+        },
+        {
+          "section_id": "ban_trung_tam",
+          "title": "Ban, trung tâm",
+          "pdf_page_range": [
+            28,
+            29
+          ]
+        },
+        {
+          "section_id": "truong_khoa",
+          "title": "Trường, khoa đào tạo",
+          "pdf_page_range": [
+            30,
+            35
+          ]
+        },
+        {
+          "section_id": "quy_tac_ung_xu",
+          "title": "Bộ quy tắc ứng xử văn hóa sinh viên Bách khoa",
+          "pdf_page_range": [
+            36,
+            39
+          ]
+        },
+        {
+          "section_id": "chia_se_kinh_nghiem",
+          "title": "Chia sẻ kinh nghiệm",
+          "pdf_page_range": [
+            40,
+            54
+          ]
+        }
+      ],
+      "extraction": {
+        "tool": "pypdf",
+        "normalization": "Unicode NFC; gộp khoảng trắng liên tiếp thành một dấu cách; cắt khoảng trắng đầu/cuối.",
+        "manual_corrections": [
+          {
+            "pdf_page": 8,
+            "find": "�ến độ",
+            "replace": "tiến độ",
+            "reason": "Đối chiếu trực quan trang PDF: cụm đúng là 'Đánh giá tiến độ'."
+          }
+        ],
+        "page_character_counts": {
+          "2": 3503,
+          "3": 2104,
+          "5": 1360,
+          "6": 2624,
+          "7": 2348,
+          "8": 2121,
+          "9": 2508,
+          "10": 4567,
+          "11": 7545,
+          "12": 3745,
+          "13": 2490,
+          "14": 4426,
+          "15": 3747,
+          "16": 1719,
+          "17": 3075,
+          "18": 2753,
+          "19": 1909,
+          "20": 1886,
+          "21": 2758,
+          "22": 2193,
+          "23": 2153,
+          "24": 1478,
+          "25": 1180,
+          "26": 3879,
+          "27": 1376,
+          "28": 1238,
+          "29": 1633,
+          "30": 615,
+          "31": 2507,
+          "32": 1866,
+          "33": 2468,
+          "34": 2026,
+          "35": 859,
+          "36": 2209,
+          "37": 2506,
+          "38": 2372,
+          "39": 1187,
+          "40": 1566,
+          "41": 2698,
+          "42": 1511,
+          "43": 1398,
+          "44": 1249,
+          "45": 1210,
+          "46": 639,
+          "47": 1614,
+          "48": 1925,
+          "49": 1371,
+          "50": 1632,
+          "51": 1740,
+          "52": 2037,
+          "53": 1913,
+          "54": 1033
+        },
+        "unreadable_pages": []
+      }
+    }
+  ]
+}
