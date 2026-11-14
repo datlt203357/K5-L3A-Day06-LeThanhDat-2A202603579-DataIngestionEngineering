@@ -9,7 +9,7 @@
 
 ### Môi trường và thống kê chunk sau token split
 
-Lượt chạy được lưu lúc `2026-11-14 03:01:38 UTC` trên Windows 10, Python 3.13.11. Các phiên bản thư viện chính: `sentence-transformers` 6.3.0, `transformers` 5.22.2, `torch` 2.15.0, `tokenizers` 0.23.3, `numpy` 2.5.4, `pypdf` 6.21.4, `psycopg` 3.3.8, Python adapter `pgvector` 0.5.1 và `python-dotenv` 1.2.4. PostgreSQL server 16.16, extension pgvector 0.8.7. Run metadata ghi model ID nhưng không pin revision/hash của model; đây là giới hạn tái lập môi trường.
+Lượt chạy trên Windows 10, Python 3.13.11. Các phiên bản thư viện chính: `sentence-transformers` 6.3.0, `transformers` 5.22.2, `torch` 2.15.0, `tokenizers` 0.23.3, `numpy` 2.5.4, `pypdf` 6.21.4, `psycopg` 3.3.8, Python adapter `pgvector` 0.5.1 và `python-dotenv` 1.2.4. PostgreSQL server 16.16, extension pgvector 0.8.7. Run metadata ghi model ID nhưng không pin revision/hash của model; đây là giới hạn tái lập môi trường.
 
 Số token đếm bằng tokenizer của model, có tính special tokens ở mỗi chunk. Tổng ký tự/tokens là tổng trên các chunk sau token split; vì vậy A tính cả phần overlap lặp lại, còn B/C tính cả dấu phân cách đoạn được ghép vào chunk.
 
